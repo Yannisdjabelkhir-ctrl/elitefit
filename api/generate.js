@@ -15,7 +15,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-6",
-        max_tokens: 8000,
+        max_tokens: 16000,
         system: "Tu es un coach fitness expert. Réponds UNIQUEMENT en JSON valide, sans backticks.",
         messages: [{ role: "user", content: prompt }],
       }),
