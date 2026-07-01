@@ -2679,7 +2679,7 @@ export default function App() {
   const handleLogin = (u) => {
   setUser(u);
   localStorage.setItem("elitefit_user", JSON.stringify(u));
-};  const handleLogout = () => { setUser(null); setDataLoaded(false); setSessions([]); setNutritionJournal([]); setMacroResult(null); setProgrammeActif(null); setUserProfile(null); setIsPremium(false); };
+};  const handleLogout = () => { setUser(null); localStorage.removeItem("elitefit_user"); setDataLoaded(false); setSessions([]); setNutritionJournal([]); setMacroResult(null); setProgrammeActif(null); setUserProfile(null); setIsPremium(false); };
   const handleUnlock = (code) => setIsPremium(true);
   const handleStartSession = (prog) => { setProgrammeActif(prog); setTab("suivi"); };
   const handleAddSession = (s) => setSessions(prev => [...prev, s]);
