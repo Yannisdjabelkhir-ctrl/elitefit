@@ -2674,7 +2674,7 @@ export default function App() {
   useEffect(() => {
     if (!user || !dataLoaded) return;
     save({ sessions, nutrition: nutritionJournal, macroResult, programmeActif, userProfile, isPremium });
-  }, [sessions, nutritionJournal, macroResult, programmeActif, dataLoaded]);
+  }, [sessions, nutritionJournal, macroResult, programmeActif, dataLoaded, isPremium]);
 
   const handleLogin = (u) => setUser(u);
   const handleLogout = () => { setUser(null); setDataLoaded(false); setSessions([]); setNutritionJournal([]); setMacroResult(null); setProgrammeActif(null); setUserProfile(null); setIsPremium(false); };
