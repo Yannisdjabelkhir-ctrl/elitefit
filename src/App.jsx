@@ -967,9 +967,8 @@ Réponds UNIQUEMENT avec ce JSON (pas de backticks, pas d'explication) :
       setProgGenere(prog);
       onSaveProfile?.(profil);
       setVue("result");
-    } catch (e) {
-      alert("Erreur lors de la génération. Réessaie.");
-    }
+    }} catch (e) {
+  alert("Erreur: " + e.message);    }
     setLoading(false);
   };
 
