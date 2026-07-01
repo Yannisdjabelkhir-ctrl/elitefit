@@ -2643,8 +2643,10 @@ const TABS = [
 ];
 
 export default function App() {
-  const [user, setUser] = useState(null);
-  const [tab, setTab] = useState("dashboard");
+  const [user, setUser] = useState(() => {
+  const saved = localStorage.getItem("elitefit_user");
+  return saved ? JSON.parse(saved) : null;
+});  const [tab, setTab] = useState("dashboard");
   const [menuOpen, setMenuOpen] = useState(false);
   const [sessions, setSessions] = useState([]);
   const [nutritionJournal, setNutritionJournal] = useState([]);
