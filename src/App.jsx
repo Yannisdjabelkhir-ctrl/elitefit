@@ -954,22 +954,16 @@ Réponds UNIQUEMENT avec ce JSON (pas de backticks, pas d'explication) :
 }`;
 
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
+      const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 1000,
-          system: "Tu es un coach fitness expert. Réponds UNIQUEMENT en JSON valide, sans backticks ni texte autour.",
-          messages: [{ role: "user", content: prompt }],
-        }),
+        body: JSON.stringify({ prompt }),
       });
       const data = await res.json();
       const text = data.content?.map(c => c.text).join("") || "";
       const clean = text.replace(/```json|```/g, "").trim();
       const prog = JSON.parse(clean);
-      prog.macros = macros;
-      prog.profil = { ...profil };
+      prog.macros = macros;      prog.profil = { ...profil };
       setProgGenere(prog);
       onSaveProfile?.(profil);
       setVue("result");
