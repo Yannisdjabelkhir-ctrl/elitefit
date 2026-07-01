@@ -967,12 +967,13 @@ Réponds UNIQUEMENT avec ce JSON (pas de backticks, pas d'explication) :
       setProgGenere(prog);
       onSaveProfile?.(profil);
       setVue("result");
-    }} catch (e) {
-  alert("Erreur: " + e.message);    }
-    setLoading(false);
-  };
-
-  // ── Liste des programmes ──
+    }
+    } catch (e) {
+      alert("Erreur: " + e.message);
+    } finally {
+      setLoading(false);
+    }
+  };  // ── Liste des programmes ──
   if (vue === "liste") return (
     <div>
       <div style={{ borderRadius: 22, marginBottom: 20, padding: "22px 24px", background: "linear-gradient(135deg, #1a1200 0%, #0e0c00 50%, #0A0A0A 100%)", border: `1px solid ${C.gold}40`, boxShadow: `0 10px 40px rgba(0,0,0,0.65), 0 2px 0 ${C.gold}22 inset`, position: "relative", overflow: "hidden" }}>
