@@ -1609,8 +1609,10 @@ function Nutrition({ journal, setJournal }) {
   );
 }
 
-function CoachIA() {
-  const [messages, setMessages] = useState([
+function CoachIA({ sessions, nutrition }) {
+  const streak = calculerStreak(sessions);
+  const totalKcalToday = nutrition.reduce((s, n) => s + n.kcal * n.qty, 0);
+  const contexteUtilisateur = `Contexte de l'utilisateur : ${sessions.length} séance(s) enregistrée(s) au total, streak actuel de ${streak} jour(s) consécutif(s), ${totalKcalToday} kcal loggées aujourd'hui. Utilise ces informations pour personnaliser tes conseils et ajuster le programme si l'utilisateur stagne ou est irrégulier.`;  const [messages, setMessages] = useState([
     { role: "assistant", text: "Bonjour ! Je suis ton coach IA personnalisé 🏆\n\nDis-moi ton objectif, ton niveau, et tes disponibilités et je vais créer un programme sur mesure pour toi !" },
   ]);
   const [input, setInput] = useState("");
@@ -1637,7 +1639,7 @@ Quand on te demande un programme, structure-le clairement avec :
 - Les exercices avec séries/répétitions  
 - Les conseils nutrition de base
 - Un message de motivation
-Reste concis, pratique et toujours positif. Utilise des emojis avec modération.`,
+Reste concis, pratique et toujours positif. Utilise des emojis avec modération. ${contexteUtilisateur}`,
           messages: [...history, { role: "user", content: userMsg }],
         }),
       });
@@ -2880,8 +2882,7 @@ function NotificationBanner() {
         {tab === "recettes" && <Recettes programmeActif={programmeActif} />}
         {tab === "macros" && <MacroCalculateur savedResult={macroResult} onSaveResult={setMacroResult} />}
         {tab === "substitutions" && <Substitutions />}
-        {tab === "coach" && (isPremium ? <CoachIA /> : <PremiumLock onUnlock={handleUnlock} />)}
-      </main>
+        {tab === "coach" && (isPremium ? <CoachIA sessions={sessions} nutrition={nutritionJournal} /> : <PremiumLock onUnlock={handleUnlock} />)}      </main>
 
       <footer style={{ textAlign: "center", padding: "16px", borderTop: `1px solid ${C.border}`, fontSize: 11, color: C.muted, letterSpacing: "0.08em" }}>
         ELITEFIT © 2026 · POWERED BY AI
