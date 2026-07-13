@@ -719,8 +719,18 @@ const EXERCICES = [
   { nom: "Pompes diamant", groupe: "Triceps", series: "3x12", repos: "45s", kcal: 22, lieu: "Maison" },
   { nom: "Relevés de jambes allongé", groupe: "Abdos", series: "3x15", repos: "30s", kcal: 14, lieu: "Maison" },
   { nom: "Jumping jacks", groupe: "Full body / Cardio", series: "4x45s", repos: "30s", kcal: 48, lieu: "Maison" },
-];
-
+// — AVANCÉ —
+{ nom: "Squat bulgare (haltères)", groupe: "Jambes", series: "4x10", repos: "75s", kcal: 40, lieu: "Salle" },
+{ nom: "Développé couché prise serrée", groupe: "Triceps / Pectoraux", series: "4x8", repos: "75s", kcal: 35, lieu: "Salle" },
+{ nom: "Soulevé de terre roumain", groupe: "Ischios / Dos", series: "4x8", repos: "90s", kcal: 45, lieu: "Salle" },
+{ nom: "Tractions lestées", groupe: "Dos / Biceps", series: "4x6", repos: "120s", kcal: 38, lieu: "Salle" },
+{ nom: "Développé militaire strict debout", groupe: "Épaules", series: "4x8", repos: "90s", kcal: 32, lieu: "Salle" },
+{ nom: "Front squat", groupe: "Jambes / Core", series: "4x6", repos: "120s", kcal: 48, lieu: "Salle" },
+{ nom: "Dips lestés", groupe: "Triceps / Pectoraux", series: "4x8", repos: "90s", kcal: 30, lieu: "Salle" },
+{ nom: "Pistol squat (une jambe)", groupe: "Jambes / Équilibre", series: "3x6 (par jambe)", repos: "90s", kcal: 35, lieu: "Maison" },
+{ nom: "Muscle-up", groupe: "Dos / Épaules / Triceps", series: "3x5", repos: "150s", kcal: 40, lieu: "Salle" },
+{ nom: "Good morning barre", groupe: "Ischios / Dos", series: "4x10", repos: "75s", kcal: 28, lieu: "Salle" },
+  ];  
 const ALIMENTS = [
   { nom: "Blanc de poulet 100g", kcal: 165, prot: 31, gluc: 0, lip: 3.6 },
   { nom: "Riz blanc 100g (cuit)", kcal: 130, prot: 2.7, gluc: 28, lip: 0.3 },
