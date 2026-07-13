@@ -1346,8 +1346,7 @@ function Exercices() {
       }}>
         <div style={{ position: "absolute", top: -30, right: -30, width: 140, height: 140, borderRadius: "50%", background: `radial-gradient(circle, ${C.gold}15 0%, transparent 70%)`, pointerEvents: "none" }} />
         <p style={{ ...styles.pageTitle, marginBottom: 4, fontSize: 24 }}>Exercices</p>
-        <p style={{ ...styles.pageSubtitle, marginBottom: 0, fontSize: 12 }}>30 mouvements · Salle & Maison</p>
-      </div>
+        <p style={{ ...styles.pageSubtitle, marginBottom: 0, fontSize: 12 }}>{EXERCICES.length} mouvements · Salle & Maison</p>      </div>
 
       {/* Lieu tabs */}
       <div style={{ display: "flex", gap: 0, marginBottom: 20, background: C.card, borderRadius: 12, padding: 4, border: `1px solid ${C.border}`, width: "fit-content" }}>
