@@ -1465,7 +1465,15 @@ function Nutrition({ journal, setJournal }) {
     setSearch("");
     setQty(1);
   };
-
+  const handlePhotoResult = (data) => {
+    addAliment({
+      nom: data.aliments.join(', '),
+      kcal: data.calories_estimees,
+      prot: data.proteines_g,
+      gluc: data.glucides_g,
+      lip: data.lipides_g,
+    });
+  };
   const remove = (i) => setJournal(journal.filter((_, idx) => idx !== i));
 
   return (
@@ -1507,7 +1515,7 @@ function Nutrition({ journal, setJournal }) {
             <label style={styles.label}>Quantité (portions)</label>
             <input style={styles.input} type="number" min="0.5" step="0.5" value={qty} onChange={(e) => setQty(e.target.value)} />
           </div>
-        </div>
+        </div> <MealPhotoAnalyzer onResult={handlePhotoResult} />        
         {search && (
           <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 10, overflow: "hidden" }}>
             {filtered.map((a, i) => (
