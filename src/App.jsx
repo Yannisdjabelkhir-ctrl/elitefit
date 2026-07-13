@@ -750,8 +750,65 @@ function ProgressBar({ pct, color = C.gold }) {
 }
 
 // ── Pages ──────────────────────────────────────────────────────
+function calculerStreak(sessions) {
+  if (!sessions || sessions.length === 0) return 0;
+  const dates = [...new Set(sessions.map(s => s.date))].sort((a, b) => new Date(b) - new Date(a));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  let streak = 0;
+  let expectedDate = new Date(today);
+  for (const dateStr of dates) {
+    const d = new Date(dateStr);
+    d.setHours(0, 0, 0, 0);
+    const diffDays = Math.round((expectedDate - d) / 86400000);
+    if (diffDays === 0) {
+      streak++;
+      expectedDate.setDate(expectedDate.getDate() - 1);
+    } else if (diffDays === 1 && streak === 0) {
+      streak++;
+      expectedDate = new Date(d);
+      expectedDate.setDate(expectedDate.getDate() - 1);
+    } else {
+      break;
+    }
+  }
+  return streak;
+}
 
-function Dashboard({ sessions, nutrition, onNavigate }) {
+function getBadges(streak) {
+  const paliers = [
+    { jours: 100, label: '100 jours', emoji: '💎' },
+    { jours: 30, label: '30 jours', emoji: '🏆' },
+    { jours: 7, label: '7 jours', emoji: '🔥' },
+  ];
+  return paliers.filter(p => streak >= p.jours);
+}
+
+function StreakDisplay({ sessions }) {
+  const streak = calculerStreak(sessions);
+  const badges = getBadges(streak);
+  if (streak === 0) return null;
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 10,
+      padding: '14px 18px', borderRadius: 12,
+      background: 'linear-gradient(135deg, #1a1200 0%, #0e0c00 100%)',
+      border: '1px solid #C9A84C55', marginBottom: 20,
+    }}>
+      <span style={{ fontSize: 28 }}>🔥</span>
+      <div>
+        <div style={{ color: '#C9A84C', fontWeight: 700, fontSize: 18 }}>
+          {streak} jour{streak > 1 ? 's' : ''} de suite
+        </div>
+        {badges.length > 0 && (
+          <div style={{ color: '#888880', fontSize: 12, marginTop: 2 }}>
+            {badges.map(b => `${b.emoji} ${b.label}`).join(' · ')}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}function Dashboard({ sessions, nutrition, onNavigate }) {
   const totalKcal = nutrition.reduce((s, n) => s + n.kcal, 0);
   const totalProt = nutrition.reduce((s, n) => s + n.prot, 0);
   const thisWeek = sessions.filter((s) => {
@@ -773,8 +830,7 @@ function Dashboard({ sessions, nutrition, onNavigate }) {
   ];
 
   return (
-    <div>
-      {/* 3D Hero banner */}
+    <div><StreakDisplay sessions={sessions} />      {/* 3D Hero banner */}
       <div style={{
         borderRadius: 22, marginBottom: 22, padding: "28px 24px",
         background: "linear-gradient(135deg, #1a1200 0%, #0e0c00 40%, #0A0A0A 100%)",
