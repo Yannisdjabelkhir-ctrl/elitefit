@@ -1679,11 +1679,20 @@ Reste concis, pratique et toujours positif. Utilise des emojis avec modération.
             </div>
           ))}
           {loading && (
-            <div style={{ display: "flex" }}>
-              <div style={{ ...styles.chatBubble(false), color: C.muted }}>Coach en train d'écrire...</div>
-            </div>
-          )}
-        </div>
+  <div style={{ display: "flex" }}>
+    <div style={{ ...styles.chatBubble(false), display: "flex", alignItems: "center", gap: 4 }}>
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.gold, animation: "bounce 1.4s infinite ease-in-out both", animationDelay: "0s" }} />
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.gold, animation: "bounce 1.4s infinite ease-in-out both", animationDelay: "0.2s" }} />
+      <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.gold, animation: "bounce 1.4s infinite ease-in-out both", animationDelay: "0.4s" }} />
+    </div>
+    <style>{`
+      @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+        40% { transform: scale(1); opacity: 1; }
+      }
+    `}</style>
+  </div>
+)}        </div>
 
         <div style={{ padding: 16, borderTop: `1px solid ${C.border}`, display: "flex", gap: 10 }}>
           <textarea
