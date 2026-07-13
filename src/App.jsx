@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Home, LayoutList, Dumbbell, BarChart2, UtensilsCrossed, Calculator, RefreshCw, Bot, Target, Calendar, Plus, Trash2, Search, Send, Clock, Flame, ChevronRight, Zap, Building, Play, ChefHat, Filter } from "lucide-react";
-
+import MealPhotoAnalyzer from './MealPhotoAnalyzer';
 // ── Google Fonts ───────────────────────────────────────────────
 const fontLink = document.createElement("link");
 fontLink.rel = "stylesheet";
