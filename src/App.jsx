@@ -1224,10 +1224,22 @@ Réponds UNIQUEMENT avec ce JSON (pas de backticks, pas d'explication) :
           </div>
         </div>
 
-        <button style={{ ...styles.goldBtn, opacity: loading ? 0.6 : 1 }} onClick={genererProgramme} disabled={loading}>
-          {loading ? "Génération en cours..." : "✦ GÉNÉRER MON PROGRAMME + MACROS"}
-        </button>
-      </div>
+        <button style={{ ...styles.goldBtn, opacity: loading ? 0.6 : 1 }} onClick={genererProgramme}>
+  {loading ? (
+    <span style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+      <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#0A0A0A", animation: "bounceBtn 1.4s infinite ease-in-out both", animationDelay: "0s" }} />
+      <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#0A0A0A", animation: "bounceBtn 1.4s infinite ease-in-out both", animationDelay: "0.2s" }} />
+      <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#0A0A0A", animation: "bounceBtn 1.4s infinite ease-in-out both", animationDelay: "0.4s" }} />
+      Génération en cours
+      <style>{`
+        @keyframes bounceBtn {
+          0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+          40% { transform: scale(1); opacity: 1; }
+        }
+      `}</style>
+    </span>
+  ) : "+ GÉNÉRER MON PROGRAMME + MACROS"}
+</button>      </div>
     </div>
   );
   }
