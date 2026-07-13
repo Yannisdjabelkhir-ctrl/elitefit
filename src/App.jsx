@@ -2699,15 +2699,73 @@ const TABS = [
   { id: "substitutions",  label: "Substitutions",  icon: <RefreshCw size={15} /> },
   { id: "coach",          label: "Coach IA",       icon: <Bot size={15} /> },
 ];
+function useLocalReminders(sessions) {
+  useEffect(() => {
+    if (typeof Notification === 'undefined') return;
 
-export default function App() {
+    const checkReminders = () => {
+      if (Notification.permission !== 'granted') return;
+
+      const now = new Date();
+      const todayStr = now.toISOString().split('T')[0];
+      const hasSessionToday = sessions.some(s => s.date === todayStr);
+      const hour = now.getHours();
+
+      if (hour === 18 && !hasSessionToday) {
+        const key = `elitefit:reminder:workout:${todayStr}`;
+        if (!localStorage.getItem(key)) {
+          new Notification('EliteFit', { body: "C'est l'heure de ta séance ! 💪" });
+          localStorage.setItem(key, '1');
+        }
+      }
+
+      if (hour === 21 && !hasSessionToday) {
+        const key = `elitefit:reminder:streak:${todayStr}`;
+        if (!localStorage.getItem(key)) {
+          new Notification('EliteFit', { body: 'Ton streak va se casser ce soir ! 🔥' });
+          localStorage.setItem(key, '1');
+        }
+      }
+    };
+
+    checkReminders();
+    const interval = setInterval(checkReminders, 60000);
+    return () => clearInterval(interval);
+  }, [sessions]);
+}
+
+function NotificationBanner() {
+  const [permission, setPermission] = useState(
+    typeof Notification !== 'undefined' ? Notification.permission : 'unsupported'
+  );
+
+  if (permission === 'granted' || permission === 'unsupported') return null;
+
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '12px 16px', borderRadius: 12, marginBottom: 16,
+      background: '#111111', border: '1px solid #2A2A2A',
+    }}>
+      <span style={{ color: '#F0EDE6', fontSize: 13 }}>Active les rappels de séance</span>
+      <button
+        onClick={() => Notification.requestPermission().then(setPermission)}
+        style={{
+          padding: '8px 14px', borderRadius: 8, border: 'none',
+          background: '#C9A84C', color: '#0A0A0A', fontWeight: 700, fontSize: 13, cursor: 'pointer',
+        }}
+      >
+        Activer
+      </button>
+    </div>
+  );
+}export default function App() {
   const [user, setUser] = useState(() => {
   const saved = localStorage.getItem("elitefit_user");
   return saved ? JSON.parse(saved) : null;
 });  const [tab, setTab] = useState("dashboard");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sessions, setSessions] = useState([]);
-  const [nutritionJournal, setNutritionJournal] = useState([]);
+  const [sessions, setSessions] = useState([]); useLocalReminders(sessions);  const [nutritionJournal, setNutritionJournal] = useState([]);
   const [macroResult, setMacroResult] = useState(null);
   const [programmeActif, setProgrammeActif] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
@@ -2813,7 +2871,7 @@ export default function App() {
         </div>
       </header>
 
-      <main style={styles.main}>
+      <main style={styles.main}><NotificationBanner />
         {tab === "dashboard" && <Dashboard sessions={sessions} nutrition={nutritionJournal} onNavigate={goTo} programmeActif={programmeActif} />}
         {tab === "programmes" && <Programmes onStartSession={handleStartSession} programmeActif={programmeActif} userProfile={userProfile} onSaveProfile={setUserProfile} isPremium={isPremium} onUnlock={handleUnlock} />}
         {tab === "exercices" && <Exercices />}
