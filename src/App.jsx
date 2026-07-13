@@ -2411,6 +2411,76 @@ const RECETTES = [
     ingredients: ["150g tofu ferme", "Poivrons, brocoli, carottes", "Sauce soja, gingembre, ail", "1 c.à.s huile sésame", "Graines de sésame"],
     etapes: ["Couper le tofu en dés, faire dorer 5 min.", "Faire sauter les légumes 5 min.", "Ajouter sauce soja, ail, gingembre.", "Servir avec les graines de sésame."],
   },
+  {
+  id: 17, nom: "Bowl thon avocat quinoa", objectif: ["seche"], moment: "midi",
+  temps: 12, kcal: 420, prot: 32, gluc: 38, lip: 16, difficulte: "Facile",
+  color1: "#0D2818", color2: "#2E5F4C", emoji: "🥗",
+  ingredients: ["150g thon au naturel", "80g quinoa cuit", "1/2 avocat", "Tomates cerises", "Jus de citron"],
+  etapes: ["Cuire le quinoa selon les instructions.", "Égoutter le thon et l'émietter.", "Couper l'avocat et les tomates.", "Mélanger le tout dans un bol, arroser de citron."]
+},
+{
+  id: 18, nom: "Wrap dinde crudités", objectif: ["seche", "maintien"], moment: "midi",
+  temps: 10, kcal: 380, prot: 35, gluc: 30, lip: 14, difficulte: "Facile",
+  color1: "#1A1200", color2: "#8B6914", emoji: "🌯",
+  ingredients: ["1 tortilla complète", "120g blanc de dinde", "Salade, tomate, concombre", "1 c.à.s fromage frais léger"],
+  etapes: ["Tartiner la tortilla de fromage frais.", "Ajouter la dinde et les crudités.", "Rouler fermement et couper en deux."]
+},
+{
+  id: 19, nom: "Saumon grillé patate douce", objectif: ["masse", "maintien"], moment: "soir",
+  temps: 25, kcal: 560, prot: 40, gluc: 45, lip: 22, difficulte: "Intermédiaire",
+  color1: "#2D1B00", color2: "#C97C3C", emoji: "🐟",
+  ingredients: ["150g saumon", "200g patate douce", "Brocolis", "1 c.à.s huile d'olive"],
+  etapes: ["Cuire la patate douce au four 20 min.", "Griller le saumon à la poêle 4 min par face.", "Cuire les brocolis à la vapeur.", "Dresser et arroser d'huile d'olive."]
+},
+{
+  id: 20, nom: "Skyr fruits rouges granola", objectif: ["seche", "maintien"], moment: "matin",
+  temps: 5, kcal: 320, prot: 28, gluc: 35, lip: 8, difficulte: "Facile",
+  color1: "#1A0D2E", color2: "#8B4A9C", emoji: "🍓",
+  ingredients: ["200g skyr nature", "100g fruits rouges", "30g granola", "1 c.à.c miel"],
+  etapes: ["Verser le skyr dans un bol.", "Ajouter les fruits rouges et le granola.", "Terminer avec un filet de miel."]
+},
+{
+  id: 21, nom: "Poulet curry riz basmati", objectif: ["masse"], moment: "soir",
+  temps: 25, kcal: 620, prot: 45, gluc: 65, lip: 18, difficulte: "Intermédiaire",
+  color1: "#2D2000", color2: "#D4A017", emoji: "🍛",
+  ingredients: ["180g blanc de poulet", "150g riz basmati", "Lait de coco léger", "Curry en poudre", "Oignon, poivron"],
+  etapes: ["Faire revenir l'oignon et le poulet en dés.", "Ajouter le curry et le lait de coco.", "Laisser mijoter 15 min.", "Servir avec le riz basmati cuit."]
+},
+{
+  id: 22, nom: "Omelette blancs d'œufs épinards", objectif: ["seche"], moment: "matin",
+  temps: 8, kcal: 220, prot: 26, gluc: 4, lip: 10, difficulte: "Facile",
+  color1: "#0D1F0D", color2: "#4A7C4A", emoji: "🍳",
+  ingredients: ["6 blancs d'œufs", "1 œuf entier", "Épinards frais", "Sel, poivre"],
+  etapes: ["Battre les œufs avec sel et poivre.", "Faire revenir les épinards à la poêle.", "Verser les œufs et cuire à feu doux."]
+},
+{
+  id: 23, nom: "Chili con carne maigre", objectif: ["masse", "maintien"], moment: "soir",
+  temps: 30, kcal: 540, prot: 42, gluc: 48, lip: 16, difficulte: "Intermédiaire",
+  color1: "#2D0D00", color2: "#B33A1A", emoji: "🌶️",
+  ingredients: ["200g bœuf haché 5%", "Haricots rouges", "Tomates concassées", "Oignon, ail, épices"],
+  etapes: ["Faire revenir l'oignon, l'ail et la viande.", "Ajouter les tomates et les épices.", "Incorporer les haricots rouges.", "Laisser mijoter 20 min."]
+},
+{
+  id: 24, nom: "Salade César poulet léger", objectif: ["seche"], moment: "midi",
+  temps: 15, kcal: 400, prot: 38, gluc: 18, lip: 20, difficulte: "Facile",
+  color1: "#1A1A0D", color2: "#6B6B3A", emoji: "🥬",
+  ingredients: ["150g blanc de poulet grillé", "Laitue romaine", "Parmesan râpé", "Sauce César allégée", "Croûtons (petite quantité)"],
+  etapes: ["Griller le poulet et l'émincer.", "Mélanger la laitue avec la sauce.", "Ajouter le poulet, le parmesan et les croûtons."]
+},
+{
+  id: 25, nom: "Pâtes complètes bolognaise dinde", objectif: ["masse"], moment: "soir",
+  temps: 25, kcal: 580, prot: 40, gluc: 70, lip: 12, difficulte: "Facile",
+  color1: "#2D0D0D", color2: "#A83232", emoji: "🍝",
+  ingredients: ["180g dinde hachée", "100g pâtes complètes", "Sauce tomate", "Oignon, ail, herbes de Provence"],
+  etapes: ["Faire revenir l'oignon, l'ail et la dinde hachée.", "Ajouter la sauce tomate et les herbes.", "Laisser mijoter 15 min.", "Servir sur les pâtes cuites."]
+},
+{
+  id: 26, nom: "Smoothie protéiné banane cacao", objectif: ["masse", "maintien"], moment: "matin",
+  temps: 5, kcal: 380, prot: 30, gluc: 45, lip: 8, difficulte: "Facile",
+  color1: "#1A0D00", color2: "#6B4226", emoji: "🥤",
+  ingredients: ["1 banane", "30g whey chocolat", "250ml lait", "1 c.à.s cacao en poudre", "Glaçons"],
+  etapes: ["Mettre tous les ingrédients dans un blender.", "Mixer jusqu'à consistance lisse.", "Servir immédiatement."]
+},
 ];
 
 // Daily meal plans per objectif
