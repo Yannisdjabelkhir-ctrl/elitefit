@@ -1610,8 +1610,8 @@ function Nutrition({ journal, setJournal }) {
 }
 
 function CoachIA({ sessions, nutrition }) {
-  const streak = calculerStreak(sessions);
-  const totalKcalToday = nutrition.reduce((s, n) => s + n.kcal * n.qty, 0);
+  const streak = calculerStreak(sessions || []);  
+  const totalKcalToday = (nutrition || []).reduce((s, n) => s + (n.kcal || 0) * (n.qty || 1), 0);  
   const contexteUtilisateur = `Contexte de l'utilisateur : ${sessions.length} séance(s) enregistrée(s) au total, streak actuel de ${streak} jour(s) consécutif(s), ${totalKcalToday} kcal loggées aujourd'hui. Utilise ces informations pour personnaliser tes conseils et ajuster le programme si l'utilisateur stagne ou est irrégulier.`;  
   const [messages, setMessages] = useState([    { role: "assistant", text: "Bonjour ! Je suis ton coach IA personnalisé 🏆\n\nDis-moi ton objectif, ton niveau, et tes disponibilités et je vais créer un programme sur mesure pour toi !" },
   ]);
